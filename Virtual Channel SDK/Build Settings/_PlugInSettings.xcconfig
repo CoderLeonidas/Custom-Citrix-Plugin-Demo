@@ -1,0 +1,67 @@
+//
+// Copyright 2006, 2008-2009 Citrix Systems, Inc.  All Rights Reserved.
+//
+// This file contains build setting that all Virtual Channel plugins for the MacOS X client engine
+// should use unchanged. You should not make any changes in this file, except possible for the
+// section where compiler warnings are turned on or off.
+//
+
+
+// Use Clang
+GCC_VERSION = com.apple.compilers.llvm.clang.1_0
+GCC_C_LANGUAGE_STANDARD = c99
+
+//
+// Choose the architectures to compile for, the SDK to be used, and the deployment target. At the
+// moment we always build 32 bit versions.
+
+ARCHS = i386 x86_64
+ONLY_ACTIVE_ARCH = NO // Always build both architectures
+SDKROOT = macosx // Always use the current SDK
+MACOSX_DEPLOYMENT_TARGET = 10.9
+
+WRAPPER_EXTENSION = plugin
+INSTALL_PATH = $(HOME)/Library/Plugins
+
+// Various build settings for use by the GCC compiler.
+LINK_WITH_STANDARD_LIBRARIES = YES
+ALWAYS_SEARCH_USER_PATHS = YES
+USER_HEADER_SEARCH_PATHS = $(USER_HEADER_SEARCH_PATHS)
+MACH_O_TYPE = mh_bundle
+GCC_PREFIX_HEADER = ../Includes/PlugInPrefixHeader.h
+ZERO_LINK = NO
+GCC_ENABLE_FIX_AND_CONTINUE = NO
+
+// Compiler warnings - feel free to modify these.
+GCC_PRECOMPILE_PREFIX_HEADER = YES
+GCC_MODEL_TUNING = G5
+GCC_WARN_ABOUT_RETURN_TYPE = YES
+GCC_WARN_UNUSED_VARIABLE = YES
+GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES
+GCC_WARN_ABOUT_POINTER_SIGNEDNESS = YES
+GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES
+WARNING_CFLAGS = -W -Wall
+OTHER_CFLAGS = -Wstrict-prototypes
+OTHER_CPLUSPLUSFLAGS =
+
+//
+// Defines that can be checked by the compiler. XCODE_MACOSX_PLUGIN specifies that we are building
+// a plugin for the Macintosh. XCODE_SDK_CARBON specifies that we are building primarily using the
+// Carbon SDK.
+//
+PROJECT_DEFINITIONS = XCODE_MACOSX_PLUGIN=1 XCODE_SDK_CARBON=1
+
+//
+// Location of the info.plist file
+//
+INFOPLIST_FILE = ./Info.plist
+
+//
+// Only export a small set of symbols.
+//
+EXPORTED_SYMBOLS_FILE = $(SRCROOT)/../Build Settings/_PlugInExports.exp
+
+//
+// Need to add a search path for the libVCSDk.a library.
+//
+LIBRARY_SEARCH_PATHS = $(inherited) "$(SRCROOT)/../Libraries"
