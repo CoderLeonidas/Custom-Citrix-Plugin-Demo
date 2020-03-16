@@ -1,0 +1,8 @@
+//
+// Copyright 2006, 2008-2009 Citrix Systems, Inc.  All Rights Reserved.
+//
+// This file contains additional build setting to be used by release versions. 
+//
+
+GCC_GENERATE_DEBUGGING_SYMBOLS = NO
+GCC_PREPROCESSOR_DEFINITIONS = $(PROJECT_DEFINITIONS) $(TRACE_DEFINITIONS)

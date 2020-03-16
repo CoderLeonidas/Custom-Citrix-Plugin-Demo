@@ -1,0 +1,11 @@
+//
+// Copyright 2009 Citrix Systems, Inc.  All Rights Reserved.
+//
+// This file should set the product name to the name of your plugin, as it will appear to the user,
+// and the bundle identifier to an appropriate name. It can also be used to make any other changes.
+//
+
+//PRODUCT_NAME = TheNameOfYourPlugInGoesHere
+//BUNDLE_IDENTIFIER = com.yourcompany.TheNameOfYourPlugInGoesHere
+PRODUCT_NAME = Over
+BUNDLE_IDENTIFIER = com.citrix.plugins.samples.over
